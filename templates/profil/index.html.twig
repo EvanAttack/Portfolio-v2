@@ -1,0 +1,251 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+
+<body data-theme="light">
+
+<!-- ===== NAVBAR ===== -->
+{%  include('svg.html.twig') %}
+{%  include('navbar.html.twig') %}
+
+<!-- ===== HERO / Présentation ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4">
+        <h1 class="display-5 fw-bold">Salut, je m'appelle <span style="color:var(--accent)">Evan</span></h1>
+        <p class="lead">Étudiant en <strong>3ᵉ année de BUT Informatique</strong> — parcours <em>RACDV</em>. Passionné par le web, les apps et les animations modernes. Objectif : intégrer une école d'ingénieur.</p>
+
+        <p>Compétences : HTML • CSS • JavaScript • PHP • MySQL • Docker • Java • Android • GLSL/WebGL</p>
+
+        <div class="mt-3">
+          <a class="btn btn-primary me-2" href="#projects">Voir mes projets</a>
+          <a class="btn btn-outline-primary" href="#repos">Mes repos GitHub</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-center">
+        <img src="https://placehold.co/400x400/png?text=Moi" alt="moi" class="avatar">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE / FRESQUE ===== -->
+<section id="timeline" class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Parcours de formation</h2>
+    <div class="timeline">
+        <div class="tl-item" data-anim>
+            <div class="dot2"></div>
+            <h5>Objectif : École d'ingénieur</h5>
+            <p>Se spécialiser en architecture applicative et dev full‑stack.</p>
+        </div>
+
+
+      <div class="tl-item" data-anim>
+        <div class="dot"></div>
+        <h5>BUT Informatique — Parcours RACDV</h5>
+        <p>Projets en équipe, PHP/MVC, bases de données, Docker, Android, Java, WebGL.</p>
+      </div>
+        <div class="tl-item" data-anim>
+            <div class="dot"></div>
+            <h5>Lycée Dhuoda — Bac STI2D (Mention Bien)</h5>
+            <p>Début de la passion pour l'informatique, premières bases web et hardware.</p>
+        </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== GITHUB REPOS ===== -->
+<section id="repos" class="py-5 bg-light" style="background:transparent;">
+  <div class="container">
+    <h2 class="mb-4">Mes dépôts GitHub</h2>
+
+    <!-- Search / Filters -->
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <input id="repoSearch" class="form-control" placeholder="Rechercher un repo (ex: portfolio, SAE, plugin, JavaScript)...">
+      </div>
+
+    </div>
+
+    <div id="reposGrid" class="row gy-4">
+      <!-- repo cards injected here -->
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="py-5">
+  <div class="container">
+    <h2 class="mb-4">Projets réalisés</h2>
+    <div class="row g-4" id="projectsGrid">
+      <!-- project cards -->
+
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="https://ps.w.org/gravatar-enhanced/assets/icon-256x256.png?rev=3133133" alt="Site vitrine">
+                <div class="p-3">
+                    <h5>Site vitrine — Escape Game</h5>
+                    <p class="mb-1">Site responsif présentant un escape game, réalisé avec Bootstrap.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="{{ asset('img/spigot.png') }}" alt="Site vitrine">
+                <div class="p-3">
+                    <h5>Site vitrine — Escape Game</h5>
+                    <p class="mb-1">Site responsif présentant un escape game, réalisé avec Bootstrap.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="{{ asset("img/lundi_matin_sas_logo.jpeg") }}" alt="Site vitrine">
+                <div class="p-3">
+                    <h5>Site vitrine — Escape Game</h5>
+                    <p class="mb-1">Site responsif présentant un escape game, réalisé avec Bootstrap.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="{{ asset('img/etude.jpg') }}" alt="Jeu JavaFX">
+                <div class="p-3">
+                    <h5>Jeu de trains (Java / JavaFX)</h5>
+                    <p class="mb-1">Jeu complet avec gestion des lignes, collisions et IA basique.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="https://iutrs.unistra.fr/websites/iutrs/actus-agenda/2024-2025/ACTU_SITE.jpg" alt="Site vitrine">
+                <div class="p-3">
+                    <h5>Site vitrine — Escape Game</h5>
+                    <p class="mb-1">Site responsif présentant un escape game, réalisé avec Bootstrap.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="repo-card p-0">
+                <img class="project-img" src="https://cdn.1j1ju.com/thumbs/game-lg/medias/41/38/4b-trains-cover.jpeg" alt="Site vitrine">
+                <div class="p-3">
+                    <h5>Site vitrine — Escape Game</h5>
+                    <p class="mb-1">Site responsif présentant un escape game, réalisé avec Bootstrap.</p>
+                    <a class="btn btn-sm btn-outline-primary" href="#">Voir</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+      <!-- add more project cards as needed -->
+    </div>
+  </div>
+</section>
+
+
+
+<section class="mwg_effect000">
+    <div class="header">
+        <div>
+            <p class="button button1">
+                <img src="assets/medias/01.png" alt="">
+                <span>3d & stuff</span>
+            </p>
+        </div>
+        <div>12 items saved in your collection</div>
+        <div>
+            <p class="button button2">Add more</p>
+        </div>
+    </div>
+
+    <div class="medias">
+        <div class="media">    <a href="https://Youtube.fr"><img src="{{ asset('img/php.png') }}" alt=""></a>
+
+            </div>
+        <div class="media"><img src="{{ asset('img/symfony.svg') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/html.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/css.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/js.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/angular.webp') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/VueJs.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/java.webp') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/python.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/Kotlin.png') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/phpstorm.svg') }}" alt=""></div>
+        <div class="media"><img src="{{ asset('img/vs-code.png') }}" alt=""></div>
+
+    </div>
+</section>
+
+<!-- ===== SETTINGS / PICKER ===== -->
+<section id="settings" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="mb-4">Apparence & Paramètres</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h5>Choisir une couleur principale</h5>
+                <div class="mb-3">
+                    <span class="color-dot" data-color="#0d6efd" style="background:#0d6efd"></span>
+                    <span class="color-dot" data-color="#6610f2" style="background:#6610f2"></span>
+                    <span class="color-dot" data-color="#20c997" style="background:#20c997"></span>
+                    <span class="color-dot" data-color="#fd7e14" style="background:#fd7e14"></span>
+                    <span class="color-dot" data-color="#e83e8c" style="background:#e83e8c"></span>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="darkToggle">
+                    <label class="form-check-label" for="darkToggle">Mode sombre</label>
+                </div>
+            </div>
+
+            <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <small class="text-muted">Les choix de couleur utilisent CSS variables. Vous pouvez aussi ajouter un sélecteur plus avancé (color input) si besoin.</small>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-transparent">
+  <div class="container text-center">
+    <p class="mb-0">© <span id="year"></span> Evan N. — Portfolio créé avec HTML, Bootstrap & GSAP</p>
+  </div>
+</footer>
+
+
+<!-- SCRIPTS -->
+<!-- Bootstrap bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+
+{# Scripts locaux #}
+<script src="{{ asset('js/git.js') }}"></script>
+<script src="{{ asset('js/gsap.js') }}"></script>
+<script src="{{ asset('js/inertia.js') }}"></script>
+
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+
+
+</body>
+
+
+{% endblock %}
