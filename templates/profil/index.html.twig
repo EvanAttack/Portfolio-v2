@@ -33,33 +33,125 @@
   </div>
 </section>
 
-<!-- ===== TIMELINE / FRESQUE ===== -->
-<section id="timeline" class="py-5">
-  <div class="container">
-    <h2 class="mb-4">Parcours de formation</h2>
-    <div class="timeline">
-        <div class="tl-item" data-anim>
-            <div class="dot2"></div>
-            <h5>Objectif : École d'ingénieur</h5>
-            <p>Se spécialiser en architecture applicative et dev full‑stack.</p>
+
+<section id="timeline" class="timeline-pin">
+    <div class="timeline-screen">
+
+        <!-- GAUCHE : fresque -->
+        <div class="timeline-left">
+            <h2>Parcours de formation</h2>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="timeline-line-progress"></div>
+                <div class="tl-item active" data-step="objectif">
+                    <div class="dot2"></div>
+                    <h5>Objectif : École d'ingénieur</h5>
+                </div>
+
+                <div class="tl-item" data-step="but">
+                    <div class="dot"></div>
+                    <h5>BUT Informatique — RACDV</h5>
+                </div>
+
+                <div class="tl-item" data-step="lycee">
+                    <div class="dot"></div>
+                    <h5>Lycée Dhuoda — STI2D</h5>
+                </div>
+            </div>
         </div>
 
+        <!-- DROITE : description -->
+        <div class="timeline-right">
+            <div class="desc-item active" data-desc="objectif">
+                <h3>Pourquoi une école d’ingénieur ?</h3>
+                <p>
+                    Mon objectif est d’intégrer une école d’ingénieur afin d’approfondir mes compétences
+                    en <strong>architecture logicielle</strong>, <strong>développement full-stack</strong> et
+                    <strong>systèmes complexes</strong>.
+                </p>
+                <p>
+                    J’aime comprendre comment les applications fonctionnent en profondeur :
+                    de la conception à la mise en production, en passant par la performance,
+                    la sécurité et la scalabilité.
+                </p>
+                <p>
+                    À terme, je souhaite travailler sur des projets à forte valeur technique,
+                    où la rigueur, la réflexion et l’innovation ont une vraie importance.
+                </p>
+            </div>
 
-      <div class="tl-item" data-anim>
-        <div class="dot"></div>
-        <h5>BUT Informatique — Parcours RACDV</h5>
-        <p>Projets en équipe, PHP/MVC, bases de données, Docker, Android, Java, WebGL.</p>
-      </div>
-        <div class="tl-item" data-anim>
-            <div class="dot"></div>
-            <h5>Lycée Dhuoda — Bac STI2D (Mention Bien)</h5>
-            <p>Début de la passion pour l'informatique, premières bases web et hardware.</p>
+            <div class="desc-item" data-desc="but">
+                <h3>BUT Informatique</h3>
+                <p>
+                    Actuellement en <strong>3ᵉ année de BUT Informatique</strong>, je me spécialise dans
+                    la <strong>conception et le développement d’applications</strong>, avec une forte
+                    orientation web.
+                </p>
+                <p>
+                    J’ai travaillé sur de nombreux projets en équipe en utilisant
+                    <strong>HTML, CSS, JavaScript, PHP, SQL</strong>, ainsi que des frameworks
+                    comme <strong>Symfony et VueJs</strong> et des outils comme <strong>Git / GitLab</strong>.
+                </p>
+                <p>
+                    Ces projets m’ont permis de développer des compétences techniques,
+                    mais aussi des méthodes de travail professionnelles :
+                    organisation, autonomie, communication et respect des délais.
+                </p>
+            </div>
+
+            <div class="desc-item" data-desc="lycee">
+                <h3>Lycée STI2D</h3>
+                <p>
+                    Mon intérêt pour l’informatique a réellement commencé en
+                    <strong>STI2D</strong>, où j’ai découvert la logique de programmation,
+                    les systèmes techniques et la résolution de problèmes.
+                </p>
+                <p>
+                    Cette formation m’a donné une approche concrète et logique,
+                    qui m’aide encore aujourd’hui dans ma manière de concevoir
+                    des applications et d’aborder des problématiques techniques.
+                </p>
+                <p>
+                    C’est à cette période que j’ai compris que je voulais évoluer
+                    dans le domaine du développement et des technologies numériques.
+                </p>
+            </div>
         </div>
-
 
     </div>
-  </div>
 </section>
+
+
+
+
+<section id="skills" class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Compétences</h2>
+
+        <div class="skills-grid">
+            <div class="skill" data-desc="Développement web structuré, sémantique et responsive">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg">
+                <span>HTML</span>
+            </div>
+
+            <div class="skill" data-desc="Animations modernes, responsive design, UI clean">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg">
+                <span>CSS</span>
+            </div>
+
+            <div class="skill" data-desc="Logique, DOM, fetch, animations GSAP">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+                <span>JavaScript</span>
+            </div>
+        </div>
+
+        <p id="skill-desc" class="mt-4 text-muted"></p>
+    </div>
+</section>
+
+
+
 
 <!-- ===== GITHUB REPOS ===== -->
 <section id="repos" class="py-5 bg-light" style="background:transparent;">
