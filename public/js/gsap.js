@@ -140,6 +140,107 @@ gsap.to(progressLine, {
     }
 });
 
+gsap.from(".timeline-right", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    scrollTrigger: {
+        trigger: "#timeline",
+        start: "top 70%"
+    }
+});
 
 
 
+// ===== HORIZONTAL SCROLL SKILLS =====
+const skillsSection = document.querySelector('#skills');
+const skillsTrack = document.querySelector('.skills-track');
+
+if (skillsSection && skillsTrack) {
+    const scrollWidth = skillsTrack.scrollWidth - window.innerWidth;
+
+    gsap.to(skillsTrack, {
+        x: -scrollWidth,
+        ease: 'none',
+        scrollTrigger: {
+            trigger: skillsSection,
+            start: 'top top',
+            end: () => `+=${skillsTrack.scrollWidth}`,
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+        }
+    });
+}
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+window.initReposAnimation = function () {
+
+    const reposSection = document.querySelector('#repos');
+    const repoCards = gsap.utils.toArray('#reposGrid .repo-card');
+
+    if (!reposSection || repoCards.length === 0) return;
+
+    gsap.set(repoCards, { opacity: 0, y: 40 });
+
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: reposSection,
+            start: 'top top',
+            end: '+=1200',
+            pin: true,
+            scrub: true,
+            anticipatePin: 1
+        }
+    })
+        .to(repoCards, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power3.out'
+        })
+        .to(repoCards, {
+            scale: 1.02,
+            stagger: 0.08,
+            duration: 0.5
+        });
+};
+
+gsap.registerPlugin(Flip);
+
+const cards = gsap.utils.toArray(".flip-card");
+let activeIndex = cards.findIndex(c => c.classList.contains("active"));
+
+function updateActive(newIndex) {
+    const state = Flip.getState(cards);
+
+    cards.forEach(c => c.classList.remove("active"));
+    cards[newIndex].classList.add("active");
+
+    Flip.from(state, {
+        duration: 0.8,
+        ease: "power3.inOut",
+        absolute: true
+    });
+
+    activeIndex = newIndex;
+}
+
+document.getElementById("next")?.addEventListener("click", () => {
+    updateActive((activeIndex + 1) % cards.length);
+});
+
+document.getElementById("prev")?.addEventListener("click", () => {
+    updateActive((activeIndex - 1 + cards.length) % cards.length);
+});
+
+// click carte → page projet
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const slug = card.dataset.slug;
+        window.location.href = `/projets/${slug}`;
+    });
+});

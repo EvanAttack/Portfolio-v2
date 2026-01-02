@@ -131,6 +131,13 @@ function fetchGithub() {
             }));
 
             renderRepos(repos, 6);
+            if (window.initReposAnimation) {
+                setTimeout(() => {
+                    window.initReposAnimation();
+                    ScrollTrigger.refresh();
+                }, 50);
+            }
+
         })
         .catch(err => {
             console.error(err);
