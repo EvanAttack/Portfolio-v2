@@ -211,36 +211,41 @@ window.initReposAnimation = function () {
 
 gsap.registerPlugin(Flip);
 
-const cards = gsap.utils.toArray(".flip-card");
-let activeIndex = cards.findIndex(c => c.classList.contains("active"));
+const container = document.querySelector(".carousel-container");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
 
-function updateActive(newIndex) {
+let isAnimating = false;
+
+nextBtn.addEventListener("click", () => move(true));
+prevBtn.addEventListener("click", () => move(false));
+
+function move(forward) {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    const cards = gsap.utils.toArray(".project-card", container);
     const state = Flip.getState(cards);
 
-    cards.forEach(c => c.classList.remove("active"));
-    cards[newIndex].classList.add("active");
+    if (forward) {
+        container.append(cards[0]);
+    } else {
+        container.prepend(cards[cards.length - 1]);
+    }
 
     Flip.from(state, {
         duration: 0.8,
-        ease: "power3.inOut",
-        absolute: true
+        ease: "power2.inOut",
+        absolute: true,
+        stagger: 0.05,
+        onComplete: () => isAnimating = false
     });
-
-    activeIndex = newIndex;
 }
 
-document.getElementById("next")?.addEventListener("click", () => {
-    updateActive((activeIndex + 1) % cards.length);
-});
-
-document.getElementById("prev")?.addEventListener("click", () => {
-    updateActive((activeIndex - 1 + cards.length) % cards.length);
-});
-
-// click carte → page projet
-cards.forEach(card => {
+document.querySelectorAll(".project-card").forEach(card => {
     card.addEventListener("click", () => {
         const slug = card.dataset.slug;
-        window.location.href = `/projets/${slug}`;
+        if (!slug) return;
+        window.location.href = `/projects/${slug}`;
     });
 });
