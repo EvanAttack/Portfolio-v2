@@ -249,3 +249,87 @@ document.querySelectorAll(".project-card").forEach(card => {
         window.location.href = `/projects/${slug}`;
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // Anim navbar
+    gsap.from(".main-navbar", {
+        y: -80,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    gsap.from(".nav-links li", {
+        y: -10,
+        opacity: 0,
+        stagger: 0.1,
+        delay: 0.3,
+        duration: 0.6,
+        ease: "power2.out"
+    });
+
+    const panel = document.getElementById("projectsPanel");
+    const toggle = document.getElementById("projectsToggle");
+
+    if (!panel || !toggle) return;
+
+    let isOpen = false;
+    let lastScrollY = window.scrollY;
+
+    // état initial
+    gsap.set(panel, { height: 0, opacity: 0 });
+
+    // toggle projets
+    toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        isOpen = !isOpen;
+
+        gsap.to(panel, {
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0,
+            duration: 0.45,
+            ease: "power3.inOut"
+        });
+    });
+
+    // click ailleurs → close
+    document.addEventListener("click", (e) => {
+        if (!isOpen) return;
+        if (panel.contains(e.target) || toggle.contains(e.target)) return;
+
+        closePanel();
+    });
+
+    // click sur un projet → close
+    panel.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", closePanel);
+    });
+
+    // scroll → close
+    window.addEventListener("scroll", () => {
+        if (!isOpen) return;
+
+        const delta = Math.abs(window.scrollY - lastScrollY);
+        if (delta > 5) closePanel();
+
+        lastScrollY = window.scrollY;
+    });
+
+    // ESC → close
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isOpen) closePanel();
+    });
+
+    function closePanel() {
+        gsap.to(panel, {
+            height: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.inOut"
+        });
+        isOpen = false;
+    }
+});
