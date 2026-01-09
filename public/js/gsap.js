@@ -88,7 +88,6 @@
     } else {
         init();
     }
-})();
 
 
 const steps = document.querySelectorAll('[data-step]');
@@ -288,9 +287,10 @@ document.addEventListener("DOMContentLoaded", () => {
         isOpen = !isOpen;
 
         gsap.to(panel, {
-            height: isOpen ? "auto" : 0,
+            scaleY: isOpen ? 1 : 0,
             opacity: isOpen ? 1 : 0,
-            duration: 0.45,
+            pointerEvents: isOpen ? "auto" : "none",
+            duration: 0.35,
             ease: "power3.inOut"
         });
     });
@@ -325,11 +325,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function closePanel() {
         gsap.to(panel, {
-            height: 0,
+            scaleY: 0,
             opacity: 0,
-            duration: 0.3,
+            pointerEvents: "none",
+            duration: 0.25,
             ease: "power2.inOut"
         });
         isOpen = false;
     }
 });
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const panel = document.getElementById("contactPanel");
+        const overlay = document.getElementById("contactOverlay");
+        const openBtn = document.getElementById("contactToggle");
+        const closeBtn = document.getElementById("contactClose");
+
+        if (!panel || !overlay || !openBtn) return;
+
+        let isOpen = false;
+
+        function openPanel() {
+            isOpen = true;
+            overlay.style.pointerEvents = "auto";
+
+            gsap.to(overlay, { opacity: 1, duration: 0.3 });
+            gsap.to(panel, {
+                x: 0,
+                duration: 0.6,
+                ease: "power3.out"
+            });
+        }
+
+        function closePanel() {
+            isOpen = false;
+            overlay.style.pointerEvents = "none";
+
+            gsap.to(overlay, { opacity: 0, duration: 0.3 });
+            gsap.to(panel, {
+                x: "100%",
+                duration: 0.5,
+                ease: "power3.in"
+            });
+        }
+
+        openBtn.addEventListener("click", openPanel);
+        closeBtn.addEventListener("click", closePanel);
+        overlay.addEventListener("click", closePanel);
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && isOpen) closePanel();
+        });
+    });
+    gsap.from("#contactPanel .contact-row, #contactPanel .contact-socials a", {
+        y: 15,
+        opacity: 0,
+        stagger: 0.08,
+        delay: 0.2,
+        duration: 0.5,
+        ease: "power2.out"
+    });
+})();

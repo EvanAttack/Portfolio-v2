@@ -60,7 +60,6 @@
             });
         });
     });
-})();
 
 const skills = document.querySelectorAll(".skill")
 const desc = document.getElementById("skill-desc")
@@ -71,3 +70,4 @@ skills.forEach(skill => {
         gsap.fromTo(desc, {opacity:0,y:10}, {opacity:1,y:0,duration:.3})
     })
 })
+})();

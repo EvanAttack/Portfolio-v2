@@ -608,19 +608,21 @@ footer{padding:2rem 0;border-top:1px solid rgba(0,0,0,0.06);margin-top:4rem}
 /* PANEL PROJETS */
 .projects-panel {
     position: fixed;
-    top: 72px; /* hauteur navbar */
+    top: 80px;
     left: 0;
     width: 100%;
-    height: auto;
 
     background: white;
-    z-index: 90;
 
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    z-index: 2000; /* PLUS QUE LA NAVBAR */
 
+    transform-origin: top;
+    transform: scaleY(0);
     opacity: 0;
-    height: 0;
+
+    pointer-events: none; /* IMPORTANT */
+
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
 }
 
 .projects-panel-inner {
@@ -661,6 +663,167 @@ footer{padding:2rem 0;border-top:1px solid rgba(0,0,0,0.06);margin-top:4rem}
 .project-mini-card span {
     font-size: 0.85rem;
     color: #64748b;
+}
+
+/* OVERLAY */
+.contact-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 998;
+}
+
+/* PANEL */
+.contact-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 420px;
+    max-width: 90%;
+    height: 100vh;
+
+    background: #ffffff;
+    box-shadow: -20px 0 50px rgba(0,0,0,0.15);
+    padding: 2.5rem;
+
+    transform: translateX(100%);
+    z-index: 999;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-panel h2 {
+    font-size: 2rem;
+    color: #1e3a8a;
+}
+
+.contact-sub {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* FORM */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    font-family: inherit;
+}
+
+.contact-form button {
+    margin-top: 0.5rem;
+    padding: 0.9rem;
+    border-radius: 999px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* CLOSE */
+.contact-close {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+/* SOCIALS */
+.contact-info {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.contact-row .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+}
+
+.contact-row .value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e293b;
+    text-decoration: none;
+}
+
+.contact-row .value:hover {
+    color: #3b82f6;
+}
+
+.contact-note {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #475569;
+    line-height: 1.4;
+}
+
+.contact-subtitle {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: #1e3a8a;
+}
+
+.contact-socials {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1.2rem;
+}
+
+.contact-socials a {
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-socials a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+}
+
+.nav-cta button {
+    padding: 0.6rem 1.6rem;
+    border-radius: 999px;
+    border-color: #0a53be;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-cta button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.35);
 }
 
 

@@ -29,13 +29,15 @@
         <li>
             <a href="{{ path('contact') }}"
                class="{{ app.request.attributes.get('_route') == 'contact' ? 'active' : '' }}">
-                Contact
+                CV
             </a>
         </li>
     </ul>
 
     <div class="nav-cta">
-        <a href="{{ path('contact') }}">Me contacter</a>
+        <button id="contactToggle" class="nav-btn">
+            Me Contacter
+        </button>
     </div>
 </nav>
 

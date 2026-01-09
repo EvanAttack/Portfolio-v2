@@ -13,6 +13,7 @@
  * renderRepos(list)
  * Injecte les cartes de repo dans #reposGrid
  */
+(function () {
 
 let repos = [];
 
@@ -155,3 +156,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+})();
