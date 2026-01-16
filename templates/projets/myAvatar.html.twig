@@ -1,47 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Portfolio{% endblock %}
+{% block title %}MyAvatar – Projet{% endblock %}
 
 {% block body %}
-
-    <body data-theme="light">
 
     <!-- ===== NAVBAR ===== -->
     {%  include('svg.html.twig') %}
     {%  include('navbar.html.twig') %}
 
 
+    <section class="project-hero">
+        <div class="hero-content">
+            <span class="project-tag">Projet académique</span>
+            <h1>MyAvatar</h1>
+            <p>
+                MyAvatar est une application web développée en équipe dont l’objectif est de reproduire le fonctionnement du service Gravatar.
+            </p>
 
-    <!-- ===== HERO / Présentation ===== -->
-    <section class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4">
-                    <h1 class="display-5 fw-bold">Salut, je m'appelle <span style="color:var(--accent)">Evan</span></h1>
-                    <p class="lead">Étudiant en <strong>3ᵉ année de BUT Informatique</strong> — parcours <em>RACDV</em>. Passionné par le web, les apps et les animations modernes. Objectif : intégrer une école d'ingénieur.</p>
-
-                    <p>Compétences : HTML • CSS • JavaScript • PHP • MySQL • Docker • Java • Android • GLSL/WebGL</p>
-
-                    <div class="mt-3">
-                        <a class="btn btn-primary me-2" href="#projects">Voir mes projets</a>
-                        <a class="btn btn-outline-primary" href="#repos">Mes dépôts GitHub</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 text-center">
-                    <img src="{{ "img/evan.png" }}" alt="moi" class="avatar">
-                </div>
+            <div class="tech-stack">
+                <span>Symfony</span>
+                <span>Twig</span>
+                <span>MySQL</span>
             </div>
+        </div>
+
+        <div class="hero-visual">
+            <img src="https://ps.w.org/gravatar-enhanced/assets/icon-256x256.png?rev=3133133" alt="MyAvatar preview">
         </div>
     </section>
 
+    <section class="project-section">
+        <h2>🎯 Objectif du projet</h2>
+        <p>
+            L’objectif de <strong>MyAvatar</strong> était de concevoir une application
+            permettant à un utilisateur de créer un avatar personnalisé
+            (apparence, caractéristiques, identité),
+            tout en respectant une architecture logicielle claire et maintenable.
+        </p>
+    </section>
 
+    <section class="project-section">
+        <h2>⚙️ Fonctionnalités réalisées</h2>
 
-    </body>
+        <ul class="feature-list">
+            <li>Création d’un avatar personnalisé</li>
+            <li>Interface graphique interactive avec JavaFX</li>
+            <li>Modification dynamique des caractéristiques</li>
+            <li>Séparation claire modèle / vue / contrôleur</li>
+            <li>Gestion des événements utilisateurs</li>
+        </ul>
+    </section>
 
+    <section class="project-section">
+        <h2>🛠️ Technologies utilisées</h2>
 
+        <div class="tech-cards">
+            <div class="tech-card">Java</div>
+            <div class="tech-card">JavaFX</div>
+            <div class="tech-card">MVC</div>
+            <div class="tech-card">Programmation orientée objet</div>
+        </div>
+    </section>
 
+    <section class="project-section">
+        <h2>🚀 Compétences développées</h2>
 
+        <p>
+            Ce projet m’a permis de rehttps://ps.w.org/gravatar-enhanced/assets/icon-256x256.png?rev=3133133nforcer ma compréhension de la programmation orientée objet,
+            de la conception logicielle et de la création d’interfaces graphiques interactives.
+            J’ai également appris à structurer un projet pour le rendre évolutif et maintenable.
+        </p>
+    </section>
 
+    <section class="project-footer">
+        <a href="{{ path('home') }}" class="back-btn">← Retour à l’accueil</a>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
 
 {% endblock %}

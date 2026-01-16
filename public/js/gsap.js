@@ -92,8 +92,11 @@
 
 const steps = document.querySelectorAll('[data-step]');
 const descs = document.querySelectorAll('[data-desc]');
+    ScrollTrigger.refresh();
+
 
 if (steps.length && descs.length) {
+
 
     gsap.timeline({
         scrollTrigger: {
@@ -216,39 +219,41 @@ const prevBtn = document.getElementById("prev");
 
 let isAnimating = false;
 
-nextBtn.addEventListener("click", () => move(true));
-prevBtn.addEventListener("click", () => move(false));
+    if (container && nextBtn && prevBtn) {
 
-function move(forward) {
-    if (isAnimating) return;
-    isAnimating = true;
+        nextBtn.addEventListener("click", () => move(true));
+        prevBtn.addEventListener("click", () => move(false));
 
-    const cards = gsap.utils.toArray(".project-card", container);
-    const state = Flip.getState(cards);
+        function move(forward) {
+            if (isAnimating) return;
+            isAnimating = true;
 
-    if (forward) {
-        container.append(cards[0]);
-    } else {
-        container.prepend(cards[cards.length - 1]);
+            const cards = gsap.utils.toArray(".project-card", container);
+            const state = Flip.getState(cards);
+
+            if (forward) {
+                container.append(cards[0]);
+            } else {
+                container.prepend(cards[cards.length - 1]);
+            }
+
+            Flip.from(state, {
+                duration: 0.8,
+                ease: "power2.inOut",
+                absolute: true,
+                stagger: 0.05,
+                onComplete: () => isAnimating = false
+            });
+        }
+
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", () => {
+                const slug = card.dataset.slug;
+                if (!slug) return;
+                window.location.href = `/projects/${slug}`;
+            });
+        });
     }
-
-    Flip.from(state, {
-        duration: 0.8,
-        ease: "power2.inOut",
-        absolute: true,
-        stagger: 0.05,
-        onComplete: () => isAnimating = false
-    });
-}
-
-document.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("click", () => {
-        const slug = card.dataset.slug;
-        if (!slug) return;
-        window.location.href = `/projects/${slug}`;
-    });
-});
-
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -387,4 +392,61 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.5,
         ease: "power2.out"
     });
+
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".about-section",
+            start: "top top",
+            end: "+=200",          // durée du freeze (ajuste si besoin)
+            scrub: true,           // animation liée au scroll (aller/retour)
+            pin: false,             // lock la section
+            anticipatePin: 1,
+        }
+    });
+
+// TITRE mot par mot
+    tl.to(".about-title span", {
+        opacity: 1,
+        y: 0,
+        stagger: 0.15,
+        ease: "power3.out",
+    });
+
+// LIGNE
+    tl.to(".about-line", {
+        width: "120px",
+        ease: "power2.out",
+    }, "-=0.3");
+
+// TEXTE
+    tl.to(".about-text", {
+        opacity: 1,
+        y: 0,
+        ease: "power3.out",
+    }, "-=0.2");
+
+    gsap.utils.toArray(".interest-card").forEach((card, i) => {
+        gsap.to(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+            },
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            delay: i * 0.08,
+            ease: "power3.out"
+        });
+    });
+
+    window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+    });
+
+
+
 })();
+
