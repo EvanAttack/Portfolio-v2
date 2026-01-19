@@ -1,0 +1,222 @@
+{% extends 'base.html.twig' %}
+{% block title %}Critik Anime — Projet{% endblock %}
+
+{% block body %}
+    {% include('svg.html.twig') %}
+    {% include('navbar.html.twig') %}
+
+    <!-- HERO -->
+    <section class="project-hero-split ca-hero">
+        <div class="project-left">
+            <span class="project-badge">Projet client / serveur — API REST + Vue.js</span>
+            <h1 class="project-title">Critik Anime</h1>
+
+            <p class="project-desc">
+                Développement d’une <strong>API REST</strong> avec <strong>Symfony + API Platform</strong>,
+                et d’une application <strong>Vue.js + TypeScript</strong> consommant l’API pour
+                permettre de publier et consulter des <strong>critiques d’anime</strong>, gérer les
+                favoris et les rôles (user/admin).
+            </p>
+
+            <div class="project-tech">
+                <span>Symfony</span>
+                <span>API Platform</span>
+                <span>Vue.js</span>
+                <span>TypeScript</span>
+                <span>JWT</span>
+                <span>MyAvatar</span>
+            </div>
+        </div>
+
+        <div class="project-right">
+            <div class="project-image ca-image">
+                <img src="{{ asset('img/animeCritik/onePiece.jpg') }}" alt="Critik Anime">
+            </div>
+        </div>
+    </section>
+
+    <!-- PIN / STORY FLOW -->
+    <section class="ca-flow" id="ca-flow">
+        <div class="ca-flow-pin">
+            <div class="ca-flow-container">
+
+                <div class="ca-flow-left">
+                    <h2 class="ca-flow-title">Architecture</h2>
+                    <p class="ca-flow-sub">
+                        Un système complet <strong>client / serveur</strong> avec sécurité, permissions,
+                        et un front réactif.
+                    </p>
+
+                    <div class="ca-steps">
+                        <div class="ca-step active" data-ca-step="api">
+                            <span class="dot"></span>
+                            <div>
+                                <strong>API REST</strong>
+                                <small>Symfony + API Platform</small>
+                            </div>
+                        </div>
+
+                        <div class="ca-step" data-ca-step="front">
+                            <span class="dot"></span>
+                            <div>
+                                <strong>Front Vue</strong>
+                                <small>SPA + TypeScript</small>
+                            </div>
+                        </div>
+
+                        <div class="ca-step" data-ca-step="avatar">
+                            <span class="dot"></span>
+                            <div>
+                                <strong>MyAvatar</strong>
+                                <small>SHA-256 email → photo</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ca-flow-right">
+                    <div class="ca-panel active" data-ca-panel="api">
+                        <h3>Back-end : API REST (API Platform)</h3>
+                        <ul>
+                            <li>Ressources : utilisateurs, animes, critiques, favoris</li>
+                            <li>Groupes de sérialisation / validation</li>
+                            <li>Permissions (security), rôles & voters</li>
+                            <li>StateProcessors / StateProviders</li>
+                            <li>JWT + refresh token</li>
+                        </ul>
+                    </div>
+
+                    <div class="ca-panel" data-ca-panel="front">
+                        <h3>Front : Vue.js + TypeScript</h3>
+                        <ul>
+                            <li>Routes nommées + vues & composants</li>
+                            <li>Connexion / déconnexion / refresh token</li>
+                            <li>Gestion erreurs API + notifications</li>
+                            <li>CRUD : animes & critiques selon permissions</li>
+                            <li>Favoris + feed “dernières critiques”</li>
+                        </ul>
+                    </div>
+
+                    <div class="ca-panel" data-ca-panel="avatar">
+                        <h3>Intégration MyAvatar</h3>
+                        <p>
+                            Les avatars des utilisateurs sont chargés depuis <strong>MyAvatar</strong> :
+                            on récupère l’email depuis l’API, on le chiffre en <strong>SHA-256</strong>,
+                            puis on affiche l’image via une URL de type :
+                        </p>
+
+                        <div class="ca-code">
+                            <code>https://mon-myavatar.fr/avatar/{hashSHA256}</code>
+                        </div>
+
+                        <p class="mt">
+                            Résultat : aucune image stockée côté client, et une photo de profil
+                            réutilisable partout.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section class="ca-section">
+        <div class="container narrow">
+            <h2 class="ca-h2">Fonctionnalités clés</h2>
+
+            <div class="ca-grid" data-ca-stagger>
+                <div class="ca-card">
+                    <h3>Rôles & permissions</h3>
+                    <p>Users et admins : création, validation, suppression contrôlées via security/voters.</p>
+                </div>
+
+                <div class="ca-card">
+                    <h3>Critiques (1 par anime)</h3>
+                    <p>Note, texte + critères spécifiques ; modification/suppression par l’auteur, modération admin.</p>
+                </div>
+
+                <div class="ca-card">
+                    <h3>Validation des contenus</h3>
+                    <p>Les users soumettent un anime, l’admin valide avant publication publique.</p>
+                </div>
+
+                <div class="ca-card">
+                    <h3>Favoris & feed privé</h3>
+                    <p>Liste des favoris + dernières critiques des favoris triées de la plus récente à la plus ancienne.</p>
+                </div>
+
+                <div class="ca-card">
+                    <h3>JWT + refresh</h3>
+                    <p>Authentification sécurisée avec cookies JWT + rafraîchissement automatique.</p>
+                </div>
+
+                <div class="ca-card">
+                    <h3>UX & robustesse</h3>
+                    <p>Gestion des erreurs API, notifications, typage TypeScript, composants Vue bien découpés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINI “DATA MODEL” -->
+    <section class="ca-section alt">
+        <div class="container narrow">
+            <h2 class="ca-h2">Modèle de données</h2>
+            <div class="ca-model">
+                <div class="pill">User</div>
+                <div class="arrow">→</div>
+                <div class="pill">Anime</div>
+                <div class="arrow">→</div>
+                <div class="pill">Critique</div>
+                <div class="arrow">→</div>
+                <div class="pill">Favoris</div>
+            </div>
+            <p class="ca-muted">
+                Relations + sous-ressources (ex: publications, critiques par utilisateur, favoris d’un utilisateur, etc.).
+            </p>
+        </div>
+    </section>
+
+    <section class="ndi-gallery">
+        <h2 class="gallery-title">
+            <span>Galerie</span> <span class="highlight">photos</span>
+        </h2>
+        <div class="wrapper">
+            <div class="boxes-container">
+                {# Remplace les noms par tes fichiers réels #}
+                {% set photos = [
+                    'img/animeCritik/1.png',
+                    'img/animeCritik/2.png',
+                    'img/animeCritik/3.png',
+                    'img/animeCritik/4.png',
+                    'img/animeCritik/5.png',
+                    'img/animeCritik/6.png',
+                    'img/animeCritik/7.png',
+                    'img/animeCritik/8.png',
+
+
+                ] %}
+
+                {% for p in photos %}
+                    <div class="box">
+                        <div class="box-content" style="background-image:url('{{ asset(p) }}')" aria-label="Photo NDI {{ loop.index }}"></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="overlay"></div>
+            <div class="content"></div>
+        </div>
+    </section>
+
+    {% include('contact.html.twig') %}
+
+    <!-- scripts modules -->
+    <script src="{{ asset('js/gsap/critik-anime.js') }}"></script>
+    <script src="{{ asset('js/gsap/gallery.js') }}"></script>
+
+    <script src="{{ asset('js/gsap/gsap-init.js') }}"></script>
+{% endblock %}

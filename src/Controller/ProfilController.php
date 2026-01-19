@@ -23,6 +23,14 @@ final class ProfilController extends AbstractController
         ]);
     }
 
+    #[Route('/animeCritik', name: 'animeCritik')]
+    public function animecritik(): Response
+    {
+        return $this->render('projets/animeCritik.html.twig', [
+            'controller_name' => 'ProfilController',
+        ]);
+    }
+
     #[Route('/NDI', name: 'ndi')]
     public function ndi(): Response
     {

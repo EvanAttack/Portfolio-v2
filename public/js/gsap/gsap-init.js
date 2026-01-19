@@ -31,6 +31,7 @@
         globalThis.initReposAnimation?.();
         globalThis.initGallery?.() ;
         globalThis.initMyAvatarMask?.();
+        globalThis.initCritikAnime?.();
 
         ScrollTrigger.refresh();
     }
