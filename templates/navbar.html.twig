@@ -18,17 +18,8 @@
                 Projets
             </button>
         </li>
-
         <li>
-            <a href="{{ path('skills') }}"
-               class="{{ app.request.attributes.get('_route') == 'skills' ? 'active' : '' }}">
-                Compétences
-            </a>
-        </li>
-
-        <li>
-            <a href="{{ path('contact') }}"
-               class="{{ app.request.attributes.get('_route') == 'contact' ? 'active' : '' }}">
+            <a href="{{ asset('pdf/Evan_Nunes_CV.pdf') }}" target="_blank" rel="noopener">
                 CV
             </a>
         </li>
@@ -53,11 +44,11 @@
             </div>
         </a>
 
-        <a href="{{ path('contact') }}" class="project-mini-card">
-            <img src="{{ asset('img/mysql.svg') }}">
+        <a href="{{ path('ndi') }}" class="project-mini-card">
+            <img src="https://iutrs.unistra.fr/websites/iutrs/actus-agenda/2024-2025/ACTU_SITE.jpg" alt="nuit de l'info">
             <div>
-                <strong>Plugin One Piece</strong>
-                <span>Java · Spigot</span>
+                <strong>Nuit de l’Info 2024</strong>
+                <span>NodeJs</span>
             </div>
         </a>
 

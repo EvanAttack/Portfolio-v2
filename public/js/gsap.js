@@ -446,6 +446,151 @@ document.addEventListener("DOMContentLoaded", () => {
         ScrollTrigger.refresh();
     });
 
+    gsap.from(".hero-content > *", {
+        y: 40,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    gsap.from(".project-text > *", {
+        scrollTrigger: {
+            trigger: ".project-content",
+            start: "top 70%",
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.12
+    });
+
+    gsap.from(".team-card", {
+        scrollTrigger: {
+            trigger: ".project-team",
+            start: "top 75%",
+        },
+        y: 40,
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from(".gallery-grid img", {
+        scrollTrigger: {
+            trigger: ".project-gallery",
+            start: "top 75%",
+        },
+        scale: 0.9,
+        opacity: 0,
+        stagger: 0.05
+    });
+
+    gsap.from(".project-badge", {
+        opacity: 0,
+        y: 10,
+        duration: 0.6,
+        ease: "power2.out"
+    });
+
+    gsap.from(".project-title", {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        delay: 0.1,
+        ease: "power3.out"
+    });
+
+    gsap.from(".project-desc", {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        delay: 0.25,
+        ease: "power3.out"
+    });
+
+    gsap.from(".project-tech span", {
+        opacity: 0,
+        y: 10,
+        stagger: 0.08,
+        delay: 0.45,
+        duration: 0.5,
+        ease: "power2.out"
+    });
+
+    gsap.from(".project-image", {
+        opacity: 0,
+        scale: 0.9,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+
+    gsap.from(".team-title", {
+        scrollTrigger: {
+            trigger: ".team-section",
+            start: "top 75%",
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        ease: "power3.out"
+    });
+
+    gsap.from(".team-card", {
+        scrollTrigger: {
+            trigger: ".team-grid",
+            start: "top 80%",
+        },
+        opacity: 0,
+        y: 30,
+        stagger: 0.12,
+        duration: 0.7,
+        ease: "power3.out"
+    });
+
+    console.clear();
+
+    gsap.registerPlugin(Flip);
+
+    const modal = document.querySelector(".modal");
+    const modalContent = modal.querySelector(".content");
+    const modalOverlay = modal.querySelector(".overlay");
+    const boxes = gsap.utils.toArray(".boxes-container .box");
+    const boxesContent = gsap.utils.toArray(".box-content");
+    let boxIndex = undefined;
+
+    boxesContent.forEach((box, i) => {
+        box.addEventListener("click", () => {
+            if (boxIndex !== undefined) {
+                const state = Flip.getState(box);
+                boxes[boxIndex].appendChild(box);
+                boxIndex = undefined;
+                gsap.to([modal, modalOverlay], {
+                    autoAlpha: 0,
+                    ease: "power1.inOut",
+                    duration: 0.35
+                });
+                Flip.from(state, {
+                    duration: 0.7,
+                    ease: "power1.inOut",
+                    absolute: true,
+                    onComplete: () => gsap.set(box, { zIndex: "auto" })
+                });
+                gsap.set(box, { zIndex: 1002 });
+            } else {
+                const state = Flip.getState(box);
+                modalContent.appendChild(box);
+                boxIndex = i;
+                gsap.set(modal, { autoAlpha: 1 });
+                Flip.from(state, {
+                    duration: 0.7,
+                    ease: "power1.inOut"
+                });
+                gsap.to(modalOverlay, { autoAlpha: 0.65, duration: 0.35 });
+            }
+        });
+    });
+
+
 
 
 })();

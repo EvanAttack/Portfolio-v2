@@ -22,6 +22,14 @@ final class ProfilController extends AbstractController
             'controller_name' => 'ProfilController',
         ]);
     }
+
+    #[Route('/NDI', name: 'ndi')]
+    public function ndi(): Response
+    {
+        return $this->render('projets/NuitInfo.html.twig', [
+            'controller_name' => 'ProfilController',
+        ]);
+    }
     #[Route('/projects', name: 'projects')]
     public function projects(): Response
     {

@@ -1,0 +1,164 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyAvatar – Projet{% endblock %}
+
+{% block body %}
+
+    <!-- ===== NAVBAR ===== -->
+    {%  include('svg.html.twig') %}
+    {%  include('navbar.html.twig') %}
+
+
+
+        <<section class="project-hero-split">
+
+    <div class="project-left">
+        <span class="project-badge">Projet académique</span>
+
+        <h1 class="project-title">MyAvatar</h1>
+
+        <p class="project-desc">
+            MyAvatar est une application web développée en équipe dont l’objectif
+            est de reproduire le fonctionnement du service <strong>Gravatar</strong>.
+            Elle permet de générer et gérer des avatars uniques à partir d’une identité utilisateur.
+        </p>
+
+        <div class="project-tech">
+            <span>Html</span>
+            <span>CSS</span>
+            <span>NodeJs</span>
+        </div>
+    </div>
+
+    <div class="project-right">
+        <div class="project-image">
+            <img src="https://iutrs.unistra.fr/websites/iutrs/actus-agenda/2024-2025/ACTU_SITE.jpg" alt="MyAvatar">
+        </div>
+    </div>
+
+</section>
+
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <h2 class="about-title">
+                <span>Le </span>
+                <span class="highlight">Projet</span>
+            </h2>
+
+            <div class="about-line"></div>
+
+            <p class="about-text">
+                La Nuit de l'Info 2024 a réuni étudiants et professionnels autour d'un défi ambitieux : créer une application web interactive établissant des parallèles entre les systèmes du corps humain et les écosystèmes océaniques.
+                <br /><br />
+                Notre équipe a conçu une exploration interactive d'un océan virtuel où chaque élément marin révèle les secrets d'un organe humain. Les utilisateurs découvrent ainsi les fonctions vitales de notre corps à travers des analogies marines captivantes.
+                <br /><br />
+                Cette expérience immersive combine pédagogie et innovation technologique, offrant une nouvelle façon de comprendre la biologie humaine à travers le prisme de l'océan.
+
+
+            </p>
+        </div>
+    </section>
+
+    <section class="interests-section">
+        <div class="interests-container">
+            <h2 class="interests-title">
+                <span>Technologies</span> <span>& Compétences</span>
+            </h2>
+
+            <div class="interests-grid">
+                <div class="interest-card">
+                    <span class="icon">🎨</span>
+                    <h3>Interactivité JavaScript</h3>
+                    <p>Développement d'animations fluides et d'interactions utilisateur intuitives pour une expérience immersive.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="icon">⚡</span>
+                    <h3>Backend Node.js</h3>
+                    <p>Gestion performante des données avec un backend léger et efficace pour des temps de réponse optimaux.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="icon">👥</span>
+                    <h3>Travail d'Équipe</h3>
+                    <p>Collaboration efficace et résolution de problèmes dans un environnement de développement rapide.</p>
+                </div>
+
+                <div class="interest-card">
+                    <span class="icon">🚀</span>
+                    <h3>Innovation</h3>
+                    <p>Approche créative combinant sciences marines et anatomie humaine de manière originale.</p>
+                </div>
+                <div class="interest-card">
+                    <span class="icon">⏱️</span>
+                    <h3>Performance</h3>
+                    <p>Conception et déploiement d'une application complète en temps limité lors de l'événement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+
+        <h2 class="team-title">Notre équipe</h2>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <div class="avatar">
+                    <img src="{{ asset('img/ndi/Evan.png') }}" alt="Evan Nunes">
+                </div>
+                <h3>Evan Nunes</h3>
+                <span>Front End & Back End</span>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">
+                    <img src="{{ asset('img/ndi/Damien.jpg') }}" alt="Damien Rostaing">
+                </div>
+                <h3>Damien Rostaing</h3>
+                <span>Front End & Back End</span>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">
+                    <img src="{{ asset('img/ndi/Marc.jpg') }}" alt="Marc Haye">
+                </div>
+                <h3>Marc Haye</h3>
+                <span>Front End & Back End</span>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">
+                    <img src="{{ asset('img/ndi/Paulo.jpg') }}" alt="Paulo Moreira-Pereira">
+                </div>
+                <h3>Paulo Moreira-Pereira</h3>
+                <span>Front End & Vidéo</span>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">
+                    <img src="{{ asset('img/ndi/Matteo.jpg') }}" alt="Mattéo Benhalima">
+                </div>
+                <h3>Mattéo Benhalima</h3>
+                <span>Front End & Back End</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

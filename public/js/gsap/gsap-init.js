@@ -1,3 +1,4 @@
+// assets/js/gsap/gsap-init.js
 (function () {
 
     if (typeof gsap === "undefined") {
