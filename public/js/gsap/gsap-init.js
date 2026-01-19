@@ -19,17 +19,18 @@
     gsap.registerPlugin(ScrollTrigger, Flip);
 
     function initAllGSAP() {
-        window.initHero?.();
-        window.initAbout?.();
-        window.initInterests?.();
-        window.initTimeline?.();
-        window.initSkills?.();
-        window.initRepos?.();
-        window.initNavbar?.();
-        window.initContact?.();
-        window.initCarousel?.();
-        window.initReposAnimation?.();
-        window.initGallery?.() ;
+        globalThis.initHero?.();
+        globalThis.initAbout?.();
+        globalThis.initInterests?.();
+        globalThis.initTimeline?.();
+        globalThis.initSkills?.();
+        globalThis.initRepos?.();
+        globalThis.initNavbar?.();
+        globalThis.initContact?.();
+        globalThis.initCarousel?.();
+        globalThis.initReposAnimation?.();
+        globalThis.initGallery?.() ;
+        globalThis.initMyAvatarMask?.();
 
         ScrollTrigger.refresh();
     }

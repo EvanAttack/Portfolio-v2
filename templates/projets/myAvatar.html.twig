@@ -1,108 +1,158 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MyAvatar – Projet{% endblock %}
+{% block title %}MyAvatar — Projet{% endblock %}
 
 {% block body %}
+    {% include('svg.html.twig') %}
+    {% include('navbar.html.twig') %}
 
-    <!-- ===== NAVBAR ===== -->
-    {%  include('svg.html.twig') %}
-    {%  include('navbar.html.twig') %}
+    <section class="project-hero-split">
+        <div class="project-left">
+            <span class="project-badge">Projet académique — Symfony</span>
+            <h1 class="project-title">MyAvatar</h1>
 
-
-    <section class="project-hero">
-        <div class="hero-content">
-            <span class="project-tag">Projet académique</span>
-            <h1>MyAvatar</h1>
-            <p>
-                MyAvatar est une application web développée en équipe dont l’objectif est de reproduire le fonctionnement du service Gravatar.
+            <p class="project-desc">
+                Application web en <strong>server-side rendering</strong> (Symfony + Twig) inspirée de <strong>Gravatar</strong> :
+                associer une adresse email à une photo de profil, récupérable via une URL basée sur un <strong>hash SHA-256</strong>.
             </p>
 
-            <div class="tech-stack">
+            <div class="project-tech">
                 <span>Symfony</span>
                 <span>Twig</span>
                 <span>MySQL</span>
+                <span>JS (AJAX)</span>
+                <span>SHA-256</span>
             </div>
         </div>
 
-        <div class="hero-visual">
-            <img src="https://ps.w.org/gravatar-enhanced/assets/icon-256x256.png?rev=3133133" alt="MyAvatar preview">
+        <div class="project-right">
+            <div class="project-image">
+                <img src="https://ps.w.org/gravatar-enhanced/assets/icon-256x256.png?rev=3133133" alt="MyAvatar">
+            </div>
         </div>
     </section>
 
-    <section class="project-section">
-        <h2>🎯 Objectif du projet</h2>
-        <p>
-            L’objectif de <strong>MyAvatar</strong> était de concevoir une application
-            permettant à un utilisateur de créer un avatar personnalisé
-            (apparence, caractéristiques, identité),
-            tout en respectant une architecture logicielle claire et maintenable.
-        </p>
-    </section>
-
-
-    </section>
-
-    <section class="about-section" id="about">
-        <div class="about-container">
-            <h2 class="about-title">
-                <span>Objectif du </span>
-                <span class="highlight">Projet</span>
-            </h2>
-
-            <div class="about-line"></div>
-
-            <p class="about-text">
-                L’objectif de <strong>MyAvatar</strong> était de concevoir une application
-                permettant à un utilisateur de créer un avatar personnalisé
-                (apparence, caractéristiques, identité),
-                tout en respectant une architecture logicielle claire et maintenable.
-
+    {# ===== AVANT / APRES : IMAGE MASK ON SCROLL ===== #}
+    <section class="mask-section" id="myavatar-mask">
+        <div class="mask-container">
+            <h2 class="mask-title">Avant / Après refonte</h2>
+            <p class="mask-subtitle">
+                Une refonte UI réalisée pour rendre l’interface plus moderne, lisible et cohérente (typographie, layout, hiérarchie visuelle).
             </p>
-        </div>
-    </section>
 
-    <section class="interests-section">
-        <div class="interests-container">
-            <h2 class="interests-title">
-                <span>Technologies</span> <span>& Compétences</span>
-            </h2>
+            <div class="mask-stage">
+                <div class="mask-frame" id="maskFrame">
+                    {# Image AVANT (en dessous) #}
+                    <img class="mask-img base" src="{{ asset('img/avant.png') }}" alt="Avant refonte">
 
-            <div class="interests-grid">
-                <div class="interest-card">
-                    <span class="icon">🎨</span>
-                    <h3>Interactivité JavaScript</h3>
-                    <p>Développement d'animations fluides et d'interactions utilisateur intuitives pour une expérience immersive.</p>
-                </div>
+                    {# Image APRÈS (au dessus, masquée) #}
+                    <div class="mask-reveal" id="maskReveal">
+                        <img class="mask-img top" src="{{ asset('img/apres.png') }}" alt="Après refonte">
+                    </div>
 
-                <div class="interest-card">
-                    <span class="icon">⚡</span>
-                    <h3>Backend Node.js</h3>
-                    <p>Gestion performante des données avec un backend léger et efficace pour des temps de réponse optimaux.</p>
-                </div>
-
-                <div class="interest-card">
-                    <span class="icon">👥</span>
-                    <h3>Travail d'Équipe</h3>
-                    <p>Collaboration efficace et résolution de problèmes dans un environnement de développement rapide.</p>
-                </div>
-
-                <div class="interest-card">
-                    <span class="icon">🚀</span>
-                    <h3>Innovation</h3>
-                    <p>Approche créative combinant sciences marines et anatomie humaine de manière originale.</p>
-                </div>
-                <div class="interest-card">
-                    <span class="icon">⏱️</span>
-                    <h3>Performance</h3>
-                    <p>Conception et déploiement d'une application complète en temps limité lors de l'événement.</p>
+                    <div class="mask-labels">
+                        <span class="pill pill-left">Après</span>
+                        <span class="pill pill-right">Avant</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-{% endblock %}
+    {# ===== Fonctionnalités / Cahier des charges ===== #}
+    <section class="project-block">
+        <div class="container narrow">
+            <h2>Fonctionnalités réalisées</h2>
 
-{% block javascripts %}
-    {{ parent() }}
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Inscription & Auth</h3>
+                    <p>Login, mot de passe, email + photo optionnelle. Espace privé après connexion.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Gestion profil</h3>
+                    <p>Voir/modifier/supprimer l’avatar. Modifier email/mot de passe avec validation du mot de passe actuel.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>API Avatar</h3>
+                    <p>Accès public via <code>/avatar/{hash}</code> (SHA-256 email). Image par défaut si inexistant.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Confidentialité</h3>
+                    <p>Profil masquable/démasquable en AJAX. Avatar inaccessible si profil masqué.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Maintenance</h3>
+                    <p>Mode maintenance via variable d’environnement : toutes les routes (y compris avatars) redirigent.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Admin + CLI</h3>
+                    <p>Liste utilisateurs + suppression (hors admins). Commandes Symfony : créer/supprimer un utilisateur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ===== Contraintes techniques ===== #}
+    <section class="project-block alt">
+        <div class="container narrow">
+            <h2>Contraintes techniques importantes</h2>
+            <ul class="project-list">
+                <li>Images stockées hors <code>public/</code> et servies via contrôleur (BinaryFileResponse).</li>
+                <li>Mise à jour du hash lors d’un changement d’email.</li>
+                <li>Suppression de l’avatar lors de la suppression du compte.</li>
+                <li>JavaScript “vanilla” uniquement (AJAX + debouncing).</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="ndi-gallery">
+        <h2 class="gallery-title">
+            <span>Galerie</span> <span class="highlight">photos</span>
+        </h2>
+        <div class="wrapper">
+            <div class="boxes-container">
+                {# Remplace les noms par tes fichiers réels #}
+                {% set photos = [
+                    'img/myavatar/1.png',
+                    'img/myavatar/2.png',
+                    'img/myavatar/3.png',
+                    'img/myavatar/4.png',
+                    'img/myavatar/5.png',
+                    'img/myavatar/6.png',
+                    'img/myavatar/7.png',
+                    'img/myavatar/8.png',
+
+
+                ] %}
+
+                {% for p in photos %}
+                    <div class="box">
+                        <div class="box-content" style="background-image:url('{{ asset(p) }}')" aria-label="Photo NDI {{ loop.index }}"></div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="overlay"></div>
+            <div class="content"></div>
+        </div>
+    </section>
+
+    {% include('contact.html.twig') %}
+
+    {# Scripts GSAP (modules) #}
+    <script src="{{ asset('js/gsap/navbar.js') }}"></script>
+    <script src="{{ asset('js/gsap/contact.js') }}"></script>
+    <script src="{{ asset('js/gsap/myavatar-mask.js') }}"></script>
+    <script src="{{ asset('js/gsap/gallery.js') }}"></script>
+    <script src="{{ asset('js/gsap/gsap-init.js') }}"></script>
 
 {% endblock %}
