@@ -1,16 +1,28 @@
-// assets/js/gsap/interests.js
 window.initInterests = function () {
-    gsap.utils.toArray(".interest-card").forEach((card, i) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%"
-            },
-            opacity: 0,
-            y: 40,
-            duration: 0.6,
-            delay: i * 0.08,
-            ease: "power3.out"
+    initOnce("interets", () => {
+
+        const cards = gsap.utils.toArray(".interest-card");
+        if (!cards.length) return;
+
+        gsap.set(cards, {opacity: 0, y: 40});
+
+        ScrollTrigger.batch(cards, {
+            start: "top 85%",
+            onEnter: batch =>
+                gsap.to(batch, {
+                    opacity: 1,
+                    y: 0,
+                    stagger: 0.12,
+                    duration: 0.6,
+                    ease: "power3.out"
+                }),
+            onLeaveBack: batch =>
+                gsap.to(batch, {
+                    opacity: 0,
+                    y: 40,
+                    stagger: 0.08,
+                    duration: 0.4
+                })
         });
-    });
+    })
 };

@@ -1,124 +1,70 @@
-gsap.registerPlugin(ScrollTrigger);
+window.initNavbar = function () {
 
-// HERO
-gsap.from(".hero-content > *", {
-    y: 40,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 1,
-    ease: "power3.out"
-});
+    const panel = document.getElementById("projectsPanel");
+    const toggle = document.getElementById("projectsToggle");
 
-gsap.from(".hero-visual img", {
-    scale: 0.85,
-    opacity: 0,
-    duration: 1.2,
-    ease: "power3.out",
-    delay: 0.2
-});
+    if (!panel || !toggle) return;
 
-// SECTIONS
-gsap.utils.toArray(".project-section").forEach(section => {
-    gsap.from(section, {
-        scrollTrigger: {
-            trigger: section,
-            start: "top 80%",
-        },
-        y: 50,
+    // 🔐 PROTECTION ANTI DOUBLE INIT
+    if (toggle.dataset.bound === "true") return;
+    toggle.dataset.bound = "true";
+
+    gsap.from(".main-navbar", {
+        y: -80,
         opacity: 0,
-        duration: 0.8,
-        ease: "power2.out"
+        duration: 1,
+        ease: "power3.out"
     });
-});
 
-// TECH CARDS
-gsap.from(".tech-card", {
-    scrollTrigger: {
-        trigger: ".tech-cards",
-        start: "top 85%",
-    },
-    y: 30,
-    opacity: 0,
-    stagger: 0.15,
-    duration: 0.6,
-    ease: "power2.out"
-});
-
-gsap.registerPlugin(ScrollTrigger);
-
-// HERO
-gsap.from(".project-badge", {
-    y: -20,
-    opacity: 0,
-    duration: 0.6,
-    ease: "power3.out"
-});
-
-gsap.from(".project-title", {
-    y: 40,
-    opacity: 0,
-    duration: 0.9,
-    delay: 0.2,
-    ease: "power3.out"
-});
-
-gsap.from(".project-subtitle", {
-    y: 20,
-    opacity: 0,
-    duration: 0.7,
-    delay: 0.4,
-    ease: "power2.out"
-});
-
-// SECTIONS
-gsap.utils.toArray("[data-anim]").forEach(section => {
-    gsap.from(section, {
+    gsap.from(".nav-links li", {
+        y: -10,
         opacity: 0,
-        y: 60,
-        duration: 0.9,
-        ease: "power3.out",
-        scrollTrigger: {
-            trigger: section,
-            start: "top 80%"
-        }
+        stagger: 0.1,
+        delay: 0.3
     });
-});
 
-// FEATURE CARDS
-gsap.from(".feature-card", {
-    opacity: 0,
-    y: 40,
-    stagger: 0.15,
-    duration: 0.8,
-    ease: "power3.out",
-    scrollTrigger: {
-        trigger: ".features-grid",
-        start: "top 75%"
-    }
-});
+    let isOpen = false;
+    let lastScrollY = window.scrollY;
 
-// TIMELINE
-gsap.from(".timeline-item", {
-    opacity: 0,
-    x: -40,
-    stagger: 0.2,
-    duration: 0.7,
-    ease: "power2.out",
-    scrollTrigger: {
-        trigger: ".timeline",
-        start: "top 75%"
-    }
-});
+    gsap.set(panel, { scaleY: 0, opacity: 0, pointerEvents: "none" });
 
-// STACK TAGS
-gsap.from(".stack span", {
-    scale: 0.8,
-    opacity: 0,
-    stagger: 0.08,
-    duration: 0.5,
-    ease: "back.out(1.7)",
-    scrollTrigger: {
-        trigger: ".stack",
-        start: "top 80%"
+    toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        isOpen = !isOpen;
+
+        gsap.to(panel, {
+            scaleY: isOpen ? 1 : 0,
+            opacity: isOpen ? 1 : 0,
+            pointerEvents: isOpen ? "auto" : "none",
+            duration: 0.35,
+            ease: "power3.inOut"
+        });
+    });
+
+    function closePanel() {
+        gsap.to(panel, {
+            scaleY: 0,
+            opacity: 0,
+            pointerEvents: "none",
+            duration: 0.25,
+            ease: "power2.inOut"
+        });
+        isOpen = false;
     }
-});
+
+    document.addEventListener("click", (e) => {
+        if (!isOpen) return;
+        if (panel.contains(e.target) || toggle.contains(e.target)) return;
+        closePanel();
+    });
+
+    window.addEventListener("scroll", () => {
+        if (!isOpen) return;
+        if (Math.abs(window.scrollY - lastScrollY) > 5) closePanel();
+        lastScrollY = window.scrollY;
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && isOpen) closePanel();
+    });
+};

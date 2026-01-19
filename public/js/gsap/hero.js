@@ -1,6 +1,8 @@
 // assets/js/gsap/hero.js
 window.initHero = function () {
-    const h1 = document.querySelector(".hero h1");
+    initOnce("hero", () => {
+
+        const h1 = document.querySelector(".hero h1");
     const others = document.querySelectorAll(".hero p, .hero .btn");
 
     if (h1) {
@@ -21,4 +23,6 @@ window.initHero = function () {
             duration: 0.7
         });
     }
+    })
+
 };

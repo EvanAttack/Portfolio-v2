@@ -1,23 +1,26 @@
 window.initContact = function () {
-    const panel = document.getElementById("contactPanel");
-    const overlay = document.getElementById("contactOverlay");
-    const openBtn = document.getElementById("contactToggle");
-    const closeBtn = document.getElementById("contactClose");
+    initOnce("contact", () => {
 
-    if (!panel || !overlay || !openBtn) return;
+        const panel = document.getElementById("contactPanel");
+        const overlay = document.getElementById("contactOverlay");
+        const openBtn = document.getElementById("contactToggle");
+        const closeBtn = document.getElementById("contactClose");
 
-    openBtn.addEventListener("click", () => {
-        overlay.style.pointerEvents = "auto";
-        gsap.to(overlay, { opacity: 1 });
-        gsap.to(panel, { x: 0 });
-    });
+        if (!panel || !overlay || !openBtn) return;
 
-    const close = () => {
-        overlay.style.pointerEvents = "none";
-        gsap.to(overlay, { opacity: 0 });
-        gsap.to(panel, { x: "100%" });
-    };
+        openBtn.addEventListener("click", () => {
+            overlay.style.pointerEvents = "auto";
+            gsap.to(overlay, {opacity: 1});
+            gsap.to(panel, {x: 0});
+        });
 
-    overlay.addEventListener("click", close);
-    closeBtn?.addEventListener("click", close);
+        const close = () => {
+            overlay.style.pointerEvents = "none";
+            gsap.to(overlay, {opacity: 0});
+            gsap.to(panel, {x: "100%"});
+        };
+
+        overlay.addEventListener("click", close);
+        closeBtn?.addEventListener("click", close);
+    })
 };

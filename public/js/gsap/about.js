@@ -1,17 +1,20 @@
 // assets/js/gsap/about.js
 window.initAbout = function () {
+    initOnce("about", () => {
 
-    const section = document.querySelector(".about-section");
+
+
+        const section = document.querySelector(".about-section");
     if (!section) return;
 
     gsap.timeline({
         scrollTrigger: {
-            trigger: section,
+            trigger: ".about-section",
             start: "top top",
             end: "+=600",
             scrub: true,
             pin: true,
-            anticipatePin: 1
+            pinSpacing: true   // 🔴 INDISPENSABLE
         }
     })
         .to(".about-title span", {
@@ -26,4 +29,5 @@ window.initAbout = function () {
             opacity: 1,
             y: 0
         }, "-=0.2");
+})
 };
