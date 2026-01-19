@@ -29,6 +29,7 @@
         window.initContact?.();
         window.initCarousel?.();
         window.initReposAnimation?.();
+        window.initGallery?.() ;
 
         ScrollTrigger.refresh();
     }

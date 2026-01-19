@@ -10,7 +10,7 @@
 
 
 
-        <<section class="project-hero-split">
+        <section class="project-hero-split">
 
     <div class="project-left">
         <span class="project-badge">Projet académique</span>
@@ -99,54 +99,64 @@
     </section>
 
     <section class="team-section">
-
-        <h2 class="team-title">Notre équipe</h2>
+        <h2 class="team-title">
+            <span>Notre</span> <span class="highlight">équipe</span>
+        </h2>
 
         <div class="team-grid">
-
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="{{ asset('img/ndi/Evan.png') }}" alt="Evan Nunes">
+            {% for member in [
+                {'name':'Evan Nunes','role':'Front & Back','img':'img/ndi/Evan.png'},
+                {'name':'Damien Rostaing','role':'Front & Back','img':'img/ndi/Damien.jpg'},
+                {'name':'Marc Haye','role':'Front & Back','img':'img/ndi/Marc.jpg'},
+                {'name':'Paulo Moreira-Pereira','role':'Front & Vidéo','img':'img/ndi/Paulo.jpg'},
+                {'name':'Mattéo Benhalima','role':'Front & Back','img':'img/ndi/Matteo.jpg'}
+            ] %}
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="{{ asset(member.img) }}" alt="{{ member.name }}">
+                    </div>
+                    <h3>{{ member.name }}</h3>
+                    <span>{{ member.role }}</span>
                 </div>
-                <h3>Evan Nunes</h3>
-                <span>Front End & Back End</span>
-            </div>
+            {% endfor %}
+        </div>
+    </section>
 
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="{{ asset('img/ndi/Damien.jpg') }}" alt="Damien Rostaing">
-                </div>
-                <h3>Damien Rostaing</h3>
-                <span>Front End & Back End</span>
-            </div>
+    <section class="ndi-gallery">
+        <h2 class="gallery-title">
+            <span>Galerie</span> <span class="highlight">photos</span>
+        </h2>
+        <div class="wrapper">
+            <div class="boxes-container">
+                {# Remplace les noms par tes fichiers réels #}
+                {% set photos = [
+                    'img/ndi/photo1.JPG',
+                    'img/ndi/photo2.JPG',
+                    'img/ndi/photo3.JPG',
+                    'img/ndi/photo4.JPG',
+                    'img/ndi/photo5.JPG',
+                    'img/ndi/photo6.JPG',
+                    'img/ndi/photo7.JPG',
+                    'img/ndi/photo8.JPG'
 
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="{{ asset('img/ndi/Marc.jpg') }}" alt="Marc Haye">
-                </div>
-                <h3>Marc Haye</h3>
-                <span>Front End & Back End</span>
-            </div>
 
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="{{ asset('img/ndi/Paulo.jpg') }}" alt="Paulo Moreira-Pereira">
-                </div>
-                <h3>Paulo Moreira-Pereira</h3>
-                <span>Front End & Vidéo</span>
-            </div>
+                ] %}
 
-            <div class="team-card">
-                <div class="avatar">
-                    <img src="{{ asset('img/ndi/Matteo.jpg') }}" alt="Mattéo Benhalima">
-                </div>
-                <h3>Mattéo Benhalima</h3>
-                <span>Front End & Back End</span>
+                {% for p in photos %}
+                    <div class="box">
+                        <div class="box-content" style="background-image:url('{{ asset(p) }}')" aria-label="Photo NDI {{ loop.index }}"></div>
+                    </div>
+                {% endfor %}
             </div>
-
         </div>
 
+        <div class="modal">
+            <div class="overlay"></div>
+            <div class="content"></div>
+        </div>
     </section>
+
+
 
 
 
@@ -156,6 +166,13 @@
 
     <script src="{{ asset('js/gsap/navbar.js') }}"></script>
     <script src="{{ asset('js/gsap/contact.js') }}"></script>
+    <script src="{{ asset('js/gsap/interests.js') }}"></script>
+    <script src="{{ asset('js/gsap/about.js') }}"></script>
+
+
+
+    <script src="{{ asset('js/gsap/gallery.js') }}"></script>
+
     <script src="{{ asset('js/gsap/gsap-init.js') }}"></script>
 
 

@@ -1040,6 +1040,11 @@ footer{padding:2rem 0;border-top:1px solid rgba(0,0,0,0.06);margin-top:4rem}
     align-items: center;
     padding: 0 8vw;
     gap: 6rem;
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        rgba(219, 233, 255, 1)
+    );
 }
 
 .project-left {
@@ -1096,6 +1101,173 @@ footer{padding:2rem 0;border-top:1px solid rgba(0,0,0,0.06);margin-top:4rem}
 
 .project-image img {
     width: 100%;
+}
+
+
+.team-section {
+    min-height: 100vh;
+    padding: 120px 8%;
+    text-align: center;
+    background: linear-gradient(
+        180deg,
+        #dbe9ff,
+        rgba(255, 255, 255, 0.05)
+    );
+}
+
+.team-title {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    margin-bottom: 80px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+}
+
+.team-card {
+    background: rgba(255,255,255,0.04);
+    border-radius: 20px;
+    padding: 32px 20px;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,0,0,.35);
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,.15);
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.team-card span {
+    font-size: .9rem;
+    opacity: .7;
+}
+
+
+/* ===== NDI Gallery (Flip Modal) ===== */
+
+.ndi-gallery .wrapper {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 8%;
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        rgba(219, 233, 255, 1)
+    );}
+
+.ndi-gallery .boxes-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));  /* ✅ 4 colonnes */
+    gap: 18px;
+    width: min(1200px, 100%);                          /* ✅ centré + limite */
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.ndi-gallery .box {
+    width: auto;        /* ✅ plus de vw */
+    height: auto;
+    padding: 0;
+    border: 2px dashed rgba(59,130,246,0.35);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;  /* ✅ carré propre (tu peux mettre 4/5 si tu veux) */
+}
+
+.ndi-gallery .box-content {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+
+.ndi-gallery .box-content:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 30px 80px rgba(30, 58, 138, 0.24);
+}
+
+/* MODAL */
+.ndi-gallery .modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ndi-gallery .modal .content {
+    width: min(90vw, 1000px);
+    height: min(85vh, 800px);
+    aspect-ratio: auto;   /* ✅ laisse la place s’adapter */
+}
+
+.ndi-gallery .modal .content .box-content {
+    background-size: contain !important;   /* ✅ image entière */
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 20px;
+}
+
+/* Overlay */
+.ndi-gallery .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.85);
+    opacity: 0;
+}
+.ndi-gallery {
+    padding: 100px 8%;
+    background: linear-gradient(180deg, #ffffff, rgba(219, 233, 255, 1));
+}
+
+.ndi-gallery .gallery-title{
+    text-align: center;           /* ✅ centre le titre */
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 50px;
+}
+
+@media (max-width: 1100px) {
+    .ndi-gallery .boxes-container { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 800px) {
+    .ndi-gallery .boxes-container { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .ndi-gallery .boxes-container { grid-template-columns: 1fr; }
 }
 
 
